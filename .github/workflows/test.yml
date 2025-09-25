@@ -15,8 +15,11 @@ jobs:
       - name: Run tests
         run: npm test
       - name: SonerCloud
-        uses: SonarSource/sonarcloud-github-action@master
-        if: success() || failure()
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organisation=korolyovkn
+            -Dsonar.projectKey=KorolyovKN_second-action-react
+            -Dsonar.sources=.
