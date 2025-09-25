@@ -14,12 +14,8 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-      - name: SonerCloud
-        uses: SonarSource/sonarqube-scan-action@v5.0.0
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.organisation=korolyovkn
-            -Dsonar.projectKey=KorolyovKN_second-action-react
-            -Dsonar.sources=.
+          
